@@ -1,0 +1,28 @@
+<!--showGenres-->
+<section id="showGenres">
+
+            <div class="col-md-3">
+              <p class="h3">Genres</p>
+              <ul class="list-group">
+		        {% for c in genres %}
+                    <li class="list-group-item">
+                    	<p class="h4">
+                    		<a href="{{url_for('showGenre', genre_name = c.name,)}}" >
+                    		{{ c.name }}</a>
+
+                    		{% if 'username' in session %}
+                    		<a href = "{{url_for('deleteGenre', genre_name = c.name)}}">
+                    		<span class="glyphicon glyphicon-trash pull-right" data-toggle="tooltip" title="Delete Genre" data-placement="top"> </span> </a>
+
+                    		<a href = "{{url_for('editGenre', genre_name = c.name)}}">
+                    		<span class="glyphicon glyphicon-pencil pull-right " data-toggle="tooltip" title="Edit Genre" data-placement="bottom"> </span> </a>
+                    		{% endif %}
+                    		
+                    	</p>
+                    </li>
+
+                {% endfor %}
+              </ul>
+            </div>
+</section>
+<!--/showGenres-->
